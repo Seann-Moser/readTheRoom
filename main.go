@@ -57,7 +57,11 @@ func main() {
 	dpi := 300
 	width := cmToPixels(21.59, dpi)  // 8.5 inches in cm
 	height := cmToPixels(27.94, dpi) // 11 inches in cm
-	defaultSave := "~/Desktop/ReadTheRoom/"
+	wd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	defaultSave := path.Join(wd, "ReadTheRoomImages")
 	var c string
 	fmt.Printf("Save Location(%s): ", defaultSave)
 	fmt.Scanln(&c)
